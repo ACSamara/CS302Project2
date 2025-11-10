@@ -14,4 +14,4 @@ template <typename T> class Node{
 
         void setNext(Node*);
         void setValue(T);
-}
+};
