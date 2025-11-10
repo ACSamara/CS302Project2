@@ -1,10 +1,13 @@
+#ifndef LINKEDQUEUE_H
+#define LINKEDQUEUE_H
+
 #include <iostream>
 #include "Node.h"
 using namespace std;
 
 template <typename T> class LinkedQueue{
-    Node* first, last;
-    int size;
+    Node<T>* first, last;
+    int length;
     public:
         LinkedQueue();
 
@@ -14,3 +17,4 @@ template <typename T> class LinkedQueue{
         bool isEmpty() const;
         void print() const;
 };
+#endif

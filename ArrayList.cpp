@@ -3,49 +3,50 @@
 template <class T>
 ArrayList<T>::ArrayList(){
     max = 5;
-    size = 0;
-    array = new Node<T>[max];
+    length = 0;
+    data = new T[max];
 }
 template <class T>
 bool ArrayList<T>::insert(int index, const T& obj){
-    if(size == max){
+    if(length == max){
         max+=2;
-        temp = new Node<T>[max];
-        for(int i=0; i<size; i++){
+        T* temp = new T[max];
+        for(int i=0; i<length; i++){
             temp[i] = data[i];
         }
         delete[] data;
         data = temp;
     }
     // Move everything over; doesn't run if inserting at end
-    for(int i=size; i>index; i--){
+    for(int i=length; i>index; i--){
         data[i] = data[i-1];
     }
     data[index] = obj;
-    size ++;
+    length ++;
+    return true;
 }
 template <class T>
 bool ArrayList<T>::remove(int index){
-
+    return true;
 }
 template <class T>
-T ArrayList<T>::get(int) const{
+T ArrayList<T>::get(int i) const{
     return data[i];
 }
 template <class T>
 int ArrayList<T>::size() const{
-    return size;
+    return length;
 }
 template <class T>
 bool ArrayList<T>::isEmpty() const{
-    if (size == 0){
+    if (length == 0){
         return true;
     }
     return false;
 }
 template <class T>
 void ArrayList<T>::print() const{
-    for (int i= 0; i<size; i++){
-        cout<<array[i];
+    for (int i= 0; i<length; i++){
+        cout<<data[i];
     }
 }

@@ -3,7 +3,7 @@
 template <class T>
 LinkedQueue<T>::LinkedQueue(){
     first = last = nullptr;
-    size = 0;
+    length = 0;
 }
 template <class T>
 bool LinkedQueue<T>::enqueue(const T& value){
@@ -20,8 +20,8 @@ bool LinkedQueue<T>::enqueue(const T& value){
 }
 template <class T>
 T LinkedQueue<T>::dequeue(){
-    output = last->getValue();
-    toDelete = last;
+    T output = last->getValue();
+    Node<T>* toDelete = last;
     // last = last->getNext();
 }
 template <class T>

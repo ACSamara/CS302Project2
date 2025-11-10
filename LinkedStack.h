@@ -1,10 +1,13 @@
+#ifndef LINKEDSTACK_H
+#define LINKEDSTACK_H
+
 #include <iostream>
 #include "Node.h"
 using namespace std;
 
-template <typename T> class LinkedStack: public Linked{
-    Node* first;
-    int size;
+template <typename T> class LinkedStack{
+    Node<T>* first;
+    int length;
     public:
         LinkedStack();
 
@@ -14,3 +17,4 @@ template <typename T> class LinkedStack: public Linked{
         bool isEmpty() const;
         void print() const;
 };
+#endif

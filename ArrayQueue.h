@@ -1,10 +1,13 @@
+#ifndef ARRAYQUEUE_H
+#define ARRAYQUEUE_H
+
 #include <iostream>
 using namespace std;
 
 template <typename T> class ArrayQueue{
         T* data;
         int max;
-        int size;
+        int length;
     public:
         ArrayQueue();
 
@@ -14,3 +17,4 @@ template <typename T> class ArrayQueue{
         bool isEmpty() const;
         void print() const;
 };
+#endif

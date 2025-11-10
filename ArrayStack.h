@@ -1,10 +1,13 @@
+#ifndef ARRAYSTACK_H
+#define ARRAYSTACK_H
+
 #include <iostream>
 using namespace std;
 
 template <typename T> class ArrayStack{
     T* data;
     int max;
-    int size;
+    int length;
     public:
         ArrayStack();
 
@@ -14,3 +17,4 @@ template <typename T> class ArrayStack{
         bool isEmpty() const;
         void print() const;
 };
+#endif

@@ -1,10 +1,13 @@
+#ifndef LINKEDLIST_H
+#define LINKEDLIST_H
+
 #include <iostream>
 #include "Node.h"
 using namespace std;
 
 template <typename T> class LinkedList{
-    Node* first;
-    int size;
+    Node<T>* first;
+    int length;
     public:
         LinkedList();
 
@@ -15,3 +18,4 @@ template <typename T> class LinkedList{
         bool isEmpty() const;
         void print() const;
 };
+#endif

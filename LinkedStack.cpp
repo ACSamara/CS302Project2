@@ -3,7 +3,7 @@
 template <class T>
 LinkedStack<T>::LinkedStack(){
     first = nullptr;
-    size = 0;
+    length = 0;
 }
 template <class T>
 bool LinkedStack<T>::push(const T& value){
@@ -11,14 +11,14 @@ bool LinkedStack<T>::push(const T& value){
         first = new Node<T>(value, nullptr);
         return true;
     }
-    Node new(value, first);
-    first = new;
+    Node<T>* pushed = new Node<T>(value, first);
+    first = pushed;
     return true;
 }
 template <class T>
 T LinkedStack<T>::pop(){
-    output = first.getValue();
-    toDelete = first;
+    T output = first.getValue();
+    Node<T>* toDelete = first;
     first = first.getNext();
 
     toDelete.setNext(nullptr);

@@ -3,23 +3,27 @@
 template <class T>
 LinkedList<T>::LinkedList(){
     first = nullptr;
-    size = 0;
+    length = 0;
 }
 template <class T>
 bool LinkedList<T>::insert(int, const T&){
-
+    return true;
 }
 template <class T>
 bool LinkedList<T>::remove(int){
-
+    return true;
 }
 template <class T>
-T LinkedList<T>::get(int) const{
-
+T LinkedList<T>::get(int index) const{
+    Node<T>* temp = first;
+    for(int i=0; i<index; i++){
+        temp = temp->getNext();
+    }
+    return temp->getValue();
 }
 template <class T>
 int LinkedList<T>::size() const{
-    return size;
+    return length;
 }
 template <class T>
 bool LinkedList<T>::isEmpty() const{

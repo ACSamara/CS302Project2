@@ -1,3 +1,6 @@
+#ifndef NODE_H
+#define NODE_H
+
 #include <iostream>
 using namespace std;
 
@@ -15,3 +18,4 @@ template <typename T> class Node{
         void setNext(Node*);
         void setValue(T);
 };
+#endif

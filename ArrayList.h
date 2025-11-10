@@ -1,10 +1,13 @@
+#ifndef ARRAYLIST_H
+#define ARRAYLIST_H
+
 #include <iostream>
 using namespace std;
 
 template <typename T> class ArrayList{
     T* data;
     int max;
-    int size;
+    int length;
     public:
         ArrayList();
 
@@ -15,3 +18,4 @@ template <typename T> class ArrayList{
         bool isEmpty() const;
         void print() const;
 };
+#endif
