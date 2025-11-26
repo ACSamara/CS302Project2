@@ -18,4 +18,5 @@ template <typename T> class ArrayList{
         bool isEmpty() const;
         void print() const;
 };
+#include "ArrayList.cpp"
 #endif

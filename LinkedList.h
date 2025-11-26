@@ -18,4 +18,5 @@ template <typename T> class LinkedList{
         bool isEmpty() const;
         void print() const;
 };
+#include "LinkedList.cpp"
 #endif

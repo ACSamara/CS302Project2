@@ -5,9 +5,9 @@
 using namespace std;
 
 template <typename T> class ArrayQueue{
-        T* data;
-        int max;
-        int length;
+    T* data;
+    int max;
+    int length;
     public:
         ArrayQueue();
 
@@ -17,4 +17,5 @@ template <typename T> class ArrayQueue{
         bool isEmpty() const;
         void print() const;
 };
+#include "ArrayQueue.cpp"
 #endif

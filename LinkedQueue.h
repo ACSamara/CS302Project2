@@ -6,7 +6,7 @@
 using namespace std;
 
 template <typename T> class LinkedQueue{
-    Node<T>* first, last;
+    Node<T>* first, *last;
     int length;
     public:
         LinkedQueue();
@@ -17,4 +17,5 @@ template <typename T> class LinkedQueue{
         bool isEmpty() const;
         void print() const;
 };
+#include "LinkedQueue.cpp"
 #endif

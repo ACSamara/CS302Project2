@@ -7,21 +7,21 @@ LinkedStack<T>::LinkedStack(){
 }
 template <class T>
 bool LinkedStack<T>::push(const T& value){
-    if (this->isEmpty()){
-        first = new Node<T>(value, nullptr);
+    if (isEmpty()){
+        first = new Node<T>(nullptr, value);
         return true;
     }
-    Node<T>* pushed = new Node<T>(value, first);
+    Node<T>* pushed = new Node<T>(first, value);
     first = pushed;
     return true;
 }
 template <class T>
 T LinkedStack<T>::pop(){
-    T output = first.getValue();
+    T output = first->getValue();
     Node<T>* toDelete = first;
-    first = first.getNext();
+    first = first->getNext();
 
-    toDelete.setNext(nullptr);
+    toDelete->setNext(nullptr);
     toDelete = nullptr;
     delete toDelete;
 
@@ -29,7 +29,7 @@ T LinkedStack<T>::pop(){
 }
 template <class T>
 T LinkedStack<T>::peek() const{
-    return first.getValue();
+    return first->getValue();
 }
 template <class T>
 bool LinkedStack<T>::isEmpty() const{
@@ -40,5 +40,11 @@ bool LinkedStack<T>::isEmpty() const{
 }
 template <class T>
 void LinkedStack<T>::print() const{
-
+    cout << "TOP | ";
+    Node<T>* current = first;
+    while(current!=nullptr){
+        cout<<current->getValue()<<" ";
+        current = current->getNext();
+    }
+    cout<<"| BOTTOM"<<endl;
 }

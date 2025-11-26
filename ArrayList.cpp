@@ -8,7 +8,7 @@ ArrayList<T>::ArrayList(){
 }
 template <class T>
 bool ArrayList<T>::insert(int index, const T& obj){
-    if(length == max){
+    if(length >= max){
         max+=2;
         T* temp = new T[max];
         for(int i=0; i<length; i++){
@@ -27,6 +27,13 @@ bool ArrayList<T>::insert(int index, const T& obj){
 }
 template <class T>
 bool ArrayList<T>::remove(int index){
+    if(index<0||index>=length){
+        return false;
+    }
+    for(int i=index; i<length-1; i++){
+        data[i] = data[i+1];
+    }
+    length --;
     return true;
 }
 template <class T>
@@ -47,6 +54,7 @@ bool ArrayList<T>::isEmpty() const{
 template <class T>
 void ArrayList<T>::print() const{
     for (int i= 0; i<length; i++){
-        cout<<data[i];
+        cout<<data[i]<<" ";
     }
+    cout<<endl;
 }

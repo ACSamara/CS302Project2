@@ -17,4 +17,5 @@ template <typename T> class ArrayStack{
         bool isEmpty() const;
         void print() const;
 };
+#include "ArrayStack.cpp"
 #endif

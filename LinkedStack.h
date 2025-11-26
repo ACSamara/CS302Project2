@@ -17,4 +17,5 @@ template <typename T> class LinkedStack{
         bool isEmpty() const;
         void print() const;
 };
+#include "LinkedStack.cpp"
 #endif

@@ -9,13 +9,16 @@ template <typename T> class Node{
     T value;
     public:
         Node();
-        Node(const Node&);
-        Node(Node*, T);
+        Node(const Node<T>&);
+        Node(Node<T>*, T);
 
         Node* getNext();
         T getValue();
 
         void setNext(Node*);
         void setValue(T);
+
+        Node<T>& operator=(const Node<T>&);
 };
+#include "Node.cpp"
 #endif

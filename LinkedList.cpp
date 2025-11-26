@@ -6,11 +6,56 @@ LinkedList<T>::LinkedList(){
     length = 0;
 }
 template <class T>
-bool LinkedList<T>::insert(int, const T&){
+bool LinkedList<T>::insert(int index, const T& obj){
+    Node<T>* previous = first;
+    Node<T>* current = nullptr;
+    if(length<index){
+        return false;
+    }
+    if(index == 0){
+        if(length != 0){
+            current = first;
+        }
+        first = new Node<T>(current, obj);
+    }
+    else{ 
+        for(int i=0; i<index-1;i++){
+            previous = previous->getNext();
+        }       
+        current = new Node(previous->getNext(), obj);
+        previous->setNext(current);
+    }
+    previous = current = nullptr;
+    delete previous, current;
+    length ++;
     return true;
 }
 template <class T>
-bool LinkedList<T>::remove(int){
+bool LinkedList<T>::remove(int index){
+    Node<T>* previous = first, *current = nullptr;
+    if(index<0||index>=length){
+        return false;
+    }
+    if(index == 0){
+        first = first->getNext();
+        previous = nullptr;
+        delete previous;
+        length --;
+        return true;
+    }
+    for(int i=0; i<index-1; i++){
+        previous = previous->getNext();
+    }
+    current = previous->getNext();
+    if(current->getNext()!= nullptr){
+        previous->setNext(current->getNext());
+    }
+    else{
+        previous->setNext(nullptr);
+    }
+    current = nullptr;
+    delete current;
+    length --;
     return true;
 }
 template <class T>
@@ -34,5 +79,10 @@ bool LinkedList<T>::isEmpty() const{
 }
 template <class T>
 void LinkedList<T>::print() const{
-
+    Node<T>* current = first;
+    while(current!=nullptr){
+        cout<<current->getValue()<<" ";
+        current = current->getNext();
+    }
+    cout<<endl;
 }
