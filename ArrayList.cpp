@@ -8,6 +8,9 @@ ArrayList<T>::ArrayList(){
 }
 template <class T>
 bool ArrayList<T>::insert(int index, const T& obj){
+    if(length<index||index<0){
+        return false;
+    }
     if(length >= max){
         max+=2;
         T* temp = new T[max];

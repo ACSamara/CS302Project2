@@ -9,7 +9,7 @@ template <class T>
 bool LinkedList<T>::insert(int index, const T& obj){
     Node<T>* previous = first;
     Node<T>* current = nullptr;
-    if(length<index){
+    if(length<index||index<0){
         return false;
     }
     if(index == 0){
@@ -72,7 +72,7 @@ int LinkedList<T>::size() const{
 }
 template <class T>
 bool LinkedList<T>::isEmpty() const{
-    if(first == nullptr){
+    if(length <= 0){
         return true;
     }
     return false;
@@ -80,9 +80,11 @@ bool LinkedList<T>::isEmpty() const{
 template <class T>
 void LinkedList<T>::print() const{
     Node<T>* current = first;
-    while(current!=nullptr){
-        cout<<current->getValue()<<" ";
-        current = current->getNext();
+    if(!isEmpty()){
+        while(current!=nullptr){
+            cout<<current->getValue()<<" ";
+            current = current->getNext();
+        }
     }
     cout<<endl;
 }

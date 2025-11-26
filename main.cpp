@@ -6,71 +6,201 @@
 #include "LinkedStack.h"
 
 int main(){
-    cout<<"Testing Array List..."<<endl;
-    ArrayList<int> x1;
-    for(int i=0; i<5; i++){
-        x1.insert(i, i);
-    }
-    x1.print();
-    x1.insert(3, 7);
-    x1.print();
-    x1.remove(3);
-    x1.remove(0);
-    x1.print();
-
-    cout<<endl<<"Testing Linked List..."<<endl;
-    LinkedList<char> y1;
-    y1.insert(0, 'a');
-    y1.insert(1, 'b');
-    y1.insert(1, 'c');
-    y1.insert(0, 'd');
-    y1.insert(6, 'e');
-    y1.insert(4, 'f');
-    y1.print();
-    y1.remove(2);
-    y1.print();
-
-    cout<<endl<<"Testing Array Stack..."<<endl;
-    ArrayStack<string> x2;
-    x2.push("this");
-    x2.push("is");
-    x2.push("a");
-    x2.push("stack");
-    x2.print();
-    cout<<"Peek: "<<x2.peek()<<endl;
-    cout<<"Pop: "<<x2.pop()<<" "<<x2.pop()<<endl;
-    x2.print();
-
-    cout<<endl<<"Testing Linked Stack..."<<endl;
-    LinkedStack<float> y2;
-    for(float f = 0; f<2; f+=0.2){
-        y2.push(f);
-    }
-    y2.print();
-    cout<<"Peek: "<<y2.peek()<<endl;
-    cout<<"Pop: "<<y2.pop()<<" "<<y2.pop()<<endl;
-    y2.print();
-
-    cout<<endl<<"Testing Array Queue..."<<endl;
-    ArrayQueue<int> x3;
-    for(int i=2; i<33; i*=2){
-        x3.enqueue(i);
-    }
-    x3.print();
-    cout<<"Dequeue: "<<x3.dequeue()<<" "<<x3.dequeue()<<endl;
-    cout<<"Peek: "<<x3.peek()<<endl;
-
-    cout<<endl<<"Testing Linked Queue..."<<endl;
-    LinkedQueue<int> y3;
-    for(int i=0; i<5; i++){
-        y3.enqueue(i);
-    }
-    y3.print();
-    cout<<"Dequeue: ";
-    for(int i=0; i<3; i++){
-        cout<< y3.dequeue() <<" ";
-    }
-    cout << endl <<"Peek: "<< y3.peek() <<endl;
-
+    bool exit;
+    do{
+        int type, implementation;
+        char c;
+        bool cont = true;
+        cout << "==== Data Structures Tester ===="<<endl;
+        cout<<"1. Test List"<<endl<<"2. Test Stack"<<endl<<"3. Test Queue"<<endl<<"4. Exit"<<endl;
+        cin >> type;
+        if(type==4){
+            break;
+        }
+        cout<<"Choose implementation:"<<endl<<"1. Array-based"<<endl<<"2. Linked"<<endl;
+        cin>> implementation;
+        if(type == 1){
+            if(implementation==1){
+                ArrayList<int> aList;
+                int val, index;
+                do{
+                    cout<<"Value to add: ";
+                    cin>>val;
+                    cout<<"Position to add in: ";
+                    cin>>index;
+                    if(!aList.insert(index-1, val)){
+                        cout << "Invalid index.";
+                        continue;
+                    }
+                    cout<<"Continue adding? (y/n) ";
+                    cin>>c;
+                    if(c=='n'){
+                        cont = false;
+                    }
+                }while(cont);
+                aList.print();
+                cont = true;
+                do{
+                    cout<<"Position to remove: ";
+                    cin>>index;
+                    if(!aList.remove(index-1)){
+                        cout << "Invalid index. ";
+                        continue;
+                    }
+                    aList.print();
+                    cout<<"Continue removing? (y/n) ";
+                    cin>>c;
+                    if(c=='n'){
+                        cont = false;
+                    }
+                }while(cont&&!aList.isEmpty());
+                aList.print();
+            }
+            else{
+                LinkedList<int> lList;
+                int val, index;
+                do{
+                    cout<<"Value to add: ";
+                    cin>>val;
+                    cout<<"Position to add in: ";
+                    cin>>index;
+                    if(!lList.insert(index-1, val)){
+                        cout << "Invalid index.";
+                        continue;
+                    }
+                    cout<<"Continue adding? (y/n) ";
+                    cin>>c;
+                    if(c=='n'){
+                        cont = false;
+                    }
+                }while(cont);
+                lList.print();
+                cont = true;
+                do{
+                    cout<<"Position to remove: ";
+                    cin>>index;
+                    if(!lList.remove(index-1)){
+                        cout << "Invalid index. ";
+                        continue;
+                    }
+                    lList.print();
+                    cout<<"Continue removing? (y/n) ";
+                    cin>>c;
+                    if(c=='n'){
+                        cont = false;
+                    }
+                }while(cont&&!lList.isEmpty());
+                lList.print();
+            }
+        }
+        else if(type == 2){
+            if(implementation==1){
+                ArrayStack<int> aStack;
+                int val;
+                do{
+                    cout<<"Value to push: ";
+                    cin>>val;
+                    aStack.push(val);
+                    cout<<"Continue pushing? (y/n) ";
+                    cin>>c;
+                    if(c=='n'){
+                        cont = false;
+                    }
+                }while(cont);
+                aStack.print();
+                do{
+                    cout<<"1. Peek"<<endl<<"2. Pop"<<endl<<"3. Exit"<<endl;
+                    cin>>c;
+                    if(c=='1'){
+                        cout<<"Peek: "<<aStack.peek()<<endl;
+                    }
+                    else if(c=='2'){
+                        cout<<"Pop: "<<aStack.pop()<<endl;
+                    }
+                }while(c!='3'&&!aStack.isEmpty());
+                aStack.print();
+            }
+            else{
+                LinkedStack<int> lStack;
+                int val;
+                do{
+                    cout<<"Value to push: ";
+                    cin>>val;
+                    lStack.push(val);
+                    cout<<"Continue pushing? (y/n) ";
+                    cin>>c;
+                    if(c=='n'){
+                        cont = false;
+                    }
+                }while(cont);
+                lStack.print();
+                do{
+                    cout<<"1. Peek"<<endl<<"2. Pop"<<endl<<"3. Exit"<<endl;
+                    cin>>c;
+                    if(c=='1'){
+                        cout<<"Peek: "<<lStack.peek()<<endl;
+                    }
+                    else if(c=='2'){
+                        cout<<"Pop: "<<lStack.pop()<<endl;
+                    }
+                }while(c!='3'&&!lStack.isEmpty());
+                lStack.print();
+            }
+        }
+        else if(type == 3){
+            if(implementation==1){
+                int val;
+                ArrayQueue<int> aQueue;
+                do{
+                    cout<<"Value to enqueue: ";
+                    cin>>val;
+                    aQueue.enqueue(val);
+                    cout<<"Continue enqueuing? (y/n) ";
+                    cin>>c;
+                    if(c=='n'){
+                        cont = false;
+                    }
+                }while(cont);
+                aQueue.print();
+                do{
+                    cout<<"1. Peek"<<endl<<"2. Dequeue"<<endl<<"3. Exit"<<endl;
+                    cin>>c;
+                    if(c=='1'){
+                        cout<<"Peek: "<<aQueue.peek()<<endl;
+                    }
+                    else if(c=='2'){
+                        cout<<"Dequeue: "<<aQueue.dequeue()<<endl;
+                    }
+                }while(c!='3'&&!aQueue.isEmpty());
+                aQueue.print();
+            }
+            else{
+                LinkedQueue<int> lQueue;
+                int val;
+                do{
+                    cout<<"Value to enqueue: ";
+                    cin>>val;
+                    lQueue.enqueue(val);
+                    cout<<"Continue enqueuing? (y/n) ";
+                    cin>>c;
+                    if(c=='n'){
+                        cont = false;
+                    }
+                }while(cont);
+                lQueue.print();
+                do{
+                    cout<<"1. Peek"<<endl<<"2. Dequeue"<<endl<<"3. Exit"<<endl;
+                    cin>>c;
+                    if(c=='1'){
+                        cout<<"Peek: "<<lQueue.peek()<<endl;
+                    }
+                    else if(c=='2'){
+                        cout<<"Dequeue: "<<lQueue.dequeue()<<endl;
+                    }
+                }while(c!='3'&&!lQueue.isEmpty());
+                lQueue.print();
+            }
+        }
+    }while(!exit);
     return 0;
 }

@@ -10,6 +10,7 @@ bool LinkedQueue<T>::enqueue(const T& value){
     if(isEmpty()){
         first = new Node<T>(nullptr, value);
         last = first;
+        length ++;
         return true;
     }
     Node<T>* temp = first;
@@ -26,12 +27,7 @@ T LinkedQueue<T>::dequeue(){
     delete toDelete;
     toDelete = nullptr;
     length --;
-
     last = first;
-    for(int i=0; i<length; i++){
-        last = last->getNext();
-    }
-
     return output;
 }
 template <class T>
@@ -40,7 +36,7 @@ T LinkedQueue<T>::peek() const{
 }
 template <class T>
 bool LinkedQueue<T>::isEmpty() const{
-    if(first == nullptr){
+    if(length <= 0){
         return true;
     }
     return false;   
@@ -48,10 +44,12 @@ bool LinkedQueue<T>::isEmpty() const{
 template <class T>
 void LinkedQueue<T>::print() const{
     cout<<"BACK | ";
-    Node<T>* current = first;
-    while(current!=nullptr){
-        cout<<current->getValue()<<" ";
-        current = current->getNext();
+    if(!isEmpty()){
+        Node<T>* current = first;
+        while(current!=nullptr){
+            cout<<current->getValue()<<" ";
+            current = current->getNext();
+        }
     }
     cout<< "| FRONT" <<endl;
 }
